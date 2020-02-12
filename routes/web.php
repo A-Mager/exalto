@@ -12,7 +12,7 @@
 */
 
 //Product related routes
-Route::get('/', 'ProductController@index');
+Route::get('/', 'ProductController@index')->name('index');
 Route::get('/create', 'ProductController@create');
 
 
