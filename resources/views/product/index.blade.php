@@ -1,5 +1,4 @@
 @extends('layouts/app')
 @section('content')
-    <a href="/create"><button>Creeer</button></a>
-    <h1>aaaaaaaaaaaaa</h1>
+    <h1 class="title">Homepage</h1>
 @endsection

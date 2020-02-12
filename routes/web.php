@@ -13,7 +13,7 @@
 
 //Product related routes
 Route::get('/', 'ProductController@index')->name('index');
-Route::get('/create', 'ProductController@create');
+Route::get('/create', 'ProductController@create')->name('create');
 
 
 Auth::routes();
