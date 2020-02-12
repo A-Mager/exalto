@@ -11,9 +11,12 @@
 |
 */
 
+//Product related routes
+Route::get('/list', 'ProductController@index');
+Route::get('/create', 'ProductController@create');
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-//Product related routes
-Route::get('/', 'ProductController@index');
+
