@@ -30,3 +30,22 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+/**
+ * Scripts to make the file name responsive when a file has been selected on the form
+ * */
+const fileInputNL = document.querySelector('#file-pdf-nl input[type=file]');
+fileInputNL.onchange = () => {
+    if (fileInputNL.files.length > 0) {
+        const fileName = document.querySelector('#file-pdf-nl .file-name');
+        fileName.textContent = fileInputNL.files[0].name;
+    }
+};
+
+const fileInput = document.querySelector('#file-pdf-en input[type=file]');
+fileInput.onchange = () => {
+    if (fileInput.files.length > 0) {
+        const fileName = document.querySelector('#file-pdf-en .file-name');
+        fileName.textContent = fileInput.files[0].name;
+    }
+};

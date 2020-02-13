@@ -1,4 +1,5 @@
 @extends('layouts/app')
+
 @section('content')
 
     <div class="container page-content" >
@@ -9,7 +10,7 @@
                         <!-- Form aspect of the website. -->
                         <h1 class="title is-4"><strong>Nieuwe item toevoegen</strong></h1>
 
-                        <form action="{{Route('store')}}" method="POST">
+                        <form action="{{Route('store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="field">
@@ -44,38 +45,48 @@
                             </div>
 
                             <div class="field">
-
-                                <label for="pdfNL" class="label">Nederlandse PDF</label>
-
+                                <label for="pdfEN" class="label">Nederlandse PDF</label>
                                 <div class="control">
-                                    <input type="text" class="input" name="pdfNL" id="pdfNL">
+                                    <div id="file-pdf-nl" class="file has-name">
+                                        <label class="file-label">
+                                            <input class="file-input" type="file" name="pdfNL" id="pdfNL" accept=".rtf,.pdf">
+                                            <span class="file-cta">
+                                              <span class="file-icon">
+                                                <i class="fas fa-upload"></i>
+                                              </span>
+                                              <span class="file-label">
+                                                Kies een bestand...
+                                              </span>
+                                            </span>
+                                            <span class="file-name">
+                                                Geen bestand gekozen
+                                            </span>
+                                        </label>
+                                    </div>
 
                                     <p class="help is-danger">{{ $errors->first('pdfNL') }}</p>
                                 </div>
                             </div>
 
                             <div class="field">
-
                                 <label for="pdfEN" class="label">Engelse PDF</label>
-
                                 <div class="control">
-                                    <div class="file has-name">
+                                    <div id="file-pdf-en" class="file has-name">
                                         <label class="file-label">
-                                            <input class="file-input" type="file" name="resume">
+                                            <input class="file-input" type="file" name="pdfEN" accept=".rtf,.pdf">
                                             <span class="file-cta">
                                               <span class="file-icon">
                                                 <i class="fas fa-upload"></i>
                                               </span>
                                               <span class="file-label">
-                                                Choose a file…
+                                                Kies een bestand...
                                               </span>
                                             </span>
                                             <span class="file-name">
-                                              Screen Shot 2017-07-29 at 15.54.25.png
+                                              Geen bestand gekozen
                                             </span>
                                         </label>
                                     </div>
-
                                     <p class="help is-danger">{{ $errors->first('pdfEN') }}</p>
                                 </div>
                             </div>
@@ -92,3 +103,4 @@
     </div>
 
 @endsection
+

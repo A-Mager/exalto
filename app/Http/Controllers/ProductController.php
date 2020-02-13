@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\ProductDetail;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
     /**
@@ -15,7 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product/index');
+        $table = DB::table('products')->select('id', 'modelNumber', 'type')->get();
+
+        return view('product/index', ['data' => $table]);
     }
 
     /**
@@ -47,12 +51,18 @@ class ProductController extends Controller
         $detail = new ProductDetail();
 
         $detail->img_link = $request->image;
-        $detail->pdf_nl = $request->pdfNL;
-        $detail->pdf_en = $request->pdfEN;
+
+        $nlName = $request->pdfNL->getClientOriginalname();
+        $detail->pdf_nl = $nlName;
+        $file = $request->file('pdfNL')->storeAs('pdf', $nlName);
+
+        $enName = $request->pdfEN->getClientOriginalname();
+        $detail->pdf_en = $enName;
+        $file = $request->file('pdfEN')->storeAs('pdf', $enName);
+
 
         $product->detail()->save($detail);
 
-        dd($detail);
 
         return redirect('/');
 
@@ -67,7 +77,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        //TODO create a product page where the user will be redirected to when they click on the product in the datatable
     }
 
     /**
@@ -78,7 +88,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        //TODO create a editing form when the admin wants to edit a product page
     }
 
     /**
@@ -90,7 +100,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //TODO create a PUT method so the product page gets updated
     }
 
     /**
@@ -101,6 +111,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //TODO create a simple delete for a given product, this will delete all associated data and files
     }
 }

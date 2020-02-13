@@ -49526,6 +49526,27 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+/**
+ * Scripts to make the file name responsive when a file has been selected on the form
+ * */
+
+var fileInputNL = document.querySelector('#file-pdf-nl input[type=file]');
+
+fileInputNL.onchange = function () {
+  if (fileInputNL.files.length > 0) {
+    var fileName = document.querySelector('#file-pdf-nl .file-name');
+    fileName.textContent = fileInputNL.files[0].name;
+  }
+};
+
+var fileInput = document.querySelector('#file-pdf-en input[type=file]');
+
+fileInput.onchange = function () {
+  if (fileInput.files.length > 0) {
+    var fileName = document.querySelector('#file-pdf-en .file-name');
+    fileName.textContent = fileInput.files[0].name;
+  }
+};
 
 /***/ }),
 
