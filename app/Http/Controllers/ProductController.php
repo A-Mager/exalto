@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use App\ProductDetail;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -34,7 +36,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $product = new Product([
+            'modelNumber' => $request->model,
+            'type' => $request->type,
+        ]);
+
+        $product->save();
+
+        $detail = new ProductDetail();
+
+        $detail->img_link = $request->image;
+        $detail->pdf_nl = $request->pdfNL;
+        $detail->pdf_en = $request->pdfEN;
+
+        $product->detail()->save($detail);
+
+        dd($detail);
+
+        return redirect('/');
+
+
     }
 
     /**

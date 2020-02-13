@@ -15,14 +15,14 @@ class CreateProductDetailsTable extends Migration
     {
         Schema::create('product_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('productId');
-            $table->text('productInfo')->nullable();
-            $table->string('imgLink')->nullable();
-            $table->string('pdfLinkNl')->nullable();
-            $table->string('pdfLinkEn')->nullable();
+            $table->unsignedBigInteger('product_id');
+            $table->text('product_info')->nullable();
+            $table->string('img_link')->nullable();
+            $table->string('pdf_nl')->nullable();
+            $table->string('pdf_en')->nullable();
             $table->timestamps();
 
-            $table->foreign('productId')
+            $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
                 ->onDelete('cascade');

@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function details(){
-        return $this->hasOne('App\ProductDetail');
+
+    protected $fillable = ['modelNumber', 'type'];
+
+    public function detail(){
+        return $this->hasOne(ProductDetail::class);
     }
 }
