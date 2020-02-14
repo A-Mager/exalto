@@ -16,6 +16,7 @@ Route::get('/', 'ProductController@index')->name('index');
 Route::get('/create', 'ProductController@create')->name('create');
 Route::post('/store', 'ProductController@store')->name('store');
 Route::get('/product/{id}', 'ProductController@show');
+Route::get('/product/{id}/delete', 'ProductController@destroy')->name('destroy');
 
 
 Auth::routes();

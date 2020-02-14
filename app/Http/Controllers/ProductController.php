@@ -8,6 +8,8 @@ use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
+
 class ProductController extends Controller
 {
     /**
@@ -54,11 +56,11 @@ class ProductController extends Controller
 
         $nlName = $request->pdfNL->getClientOriginalname();
         $detail->pdf_nl = $nlName;
-        $file = $request->file('pdfNL')->storeAs('pdf', $nlName);
+        $file = $request->file('pdfNL')->storeAs('pdf/'.$product->modelNumber, $nlName);
 
         $enName = $request->pdfEN->getClientOriginalname();
         $detail->pdf_en = $enName;
-        $file = $request->file('pdfEN')->storeAs('pdf', $enName);
+        $file = $request->file('pdfEN')->storeAs('pdf/'.$product->modelNumber, $enName);
 
 
         $product->detail()->save($detail);
@@ -111,6 +113,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //TODO create a simple delete for a given product, this will delete all associated data and files
+        $product = Product::find($id);
+        Storage::deleteDirectory('pdf/'.$product->modelNumber);
+        $product->delete();
+        return redirect('/');
     }
 }
