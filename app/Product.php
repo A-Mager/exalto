@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
-    protected $fillable = ['modelNumber', 'type'];
+    protected $fillable = ['model_number', 'type'];
 
     public function detail(){
         return $this->hasOne(ProductDetail::class);

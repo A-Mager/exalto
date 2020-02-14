@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $table = DB::table('products')->select('id', 'modelNumber', 'type')->get();
+        $table = DB::table('products')->select('id', 'model_number', 'type')->get();
 
         return view('product/index', ['data' => $table]);
     }
@@ -44,7 +44,7 @@ class ProductController extends Controller
     {
 
         $product = new Product([
-            'modelNumber' => $request->model,
+            'model_number' => $request->model,
             'type' => $request->type,
         ]);
 
@@ -56,11 +56,11 @@ class ProductController extends Controller
 
         $nlName = $request->pdfNL->getClientOriginalname();
         $detail->pdf_nl = $nlName;
-        $file = $request->file('pdfNL')->storeAs('pdf/'.$product->modelNumber, $nlName);
+        $file = $request->file('pdfNL')->storeAs('pdf/'.$product->model_number, $nlName);
 
         $enName = $request->pdfEN->getClientOriginalname();
         $detail->pdf_en = $enName;
-        $file = $request->file('pdfEN')->storeAs('pdf/'.$product->modelNumber, $enName);
+        $file = $request->file('pdfEN')->storeAs('pdf/'.$product->model_number, $enName);
 
 
         $product->detail()->save($detail);
@@ -114,7 +114,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-        Storage::deleteDirectory('pdf/'.$product->modelNumber);
+        Storage::deleteDirectory('pdf/'.$product->model_number);
         $product->delete();
         return redirect('/');
     }

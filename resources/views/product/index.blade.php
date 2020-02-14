@@ -17,7 +17,7 @@
         @foreach ($data as $product)
 
                 <tr data-href="product/{{$product->id}}">
-                    <td><a href="product/{{$product->id}}">{{$product->modelNumber}}</a></td>
+                    <td><a href="product/{{$product->id}}">{{$product->model_number}}</a></td>
                     <td>{{$product->type}}</td>
                     @if(Auth::check() === true)
                         <td><a href="product/{{$product->id}}"><button class="button is-info is-small">Pas aan</button></a></td>
