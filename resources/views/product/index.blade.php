@@ -1,45 +1,52 @@
 @extends('layouts/app')
 @section('content')
     <div class="container">
+        <table id="table" class="table datatable" style="width:50%;">
+            <thead>
+            <tr>
+                <th>Model</th>
+                <th>Type</th>
+                @if(Auth::check() === true)
+                    <th>Acties</th>
+                @endif
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($data as $product)
+                    <tr data-href="product/{{$product->id}}">
+                        <td><a href="product/{{$product->id}}"><button class="button is-text is-small">{{$product->model_number}}</button></a></td>
+                        <td><button class="button is-white is-small" disabled>{{$product->type}}</button></td>
+                        @if(Auth::check() === true)
+                            <td>
+                                <div class="buttons are-small">
+                                    <a href="product/{{$product->id}}/edit"><button class="button is-info">Pas aan</button></a>&nbsp;
+                                    <a href="product/{{$product->id}}/delete"><button class="button is-danger">Verwijder</button></a>
+                                </div>
+                            </td>
+                        @endif
+                    </tr>
 
-    <table id="table" class="table datatable" style="width:auto">
-        <thead>
-        <tr>
-            <th>Model</th>
-            <th>Type</th>
-            @if(Auth::check() === true)
-                <th>Aanpassen</th>
-                <th>Verwijder</th>
-            @endif
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($data as $product)
+            @endforeach
 
-                <tr data-href="product/{{$product->id}}">
-                    <td><a href="product/{{$product->id}}">{{$product->model_number}}</a></td>
-                    <td>{{$product->type}}</td>
-                    @if(Auth::check() === true)
-                        <td><a href="product/{{$product->id}}"><button class="button is-info is-small">Pas aan</button></a></td>
-                        <td><a href="product/{{$product->id}}/delete"><button class="button is-danger is-small">Verwijder</button></a></td>
-                    @endif
-                </tr>
-
-        @endforeach
-
-        </tbody>
-        <tfoot>
-        <tr>
-            <th>Model</th>
-            <th>Type</th>
-            @if(Auth::check() === true)
-                <th>Aanpassen</th>
-                <th>Verwijder</th>
-            @endif
-        </tr>
-        </tfoot>
-    </table>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Model</th>
+                <th>Type</th>
+                @if(Auth::check() === true)
+                    <th>Acties</th>
+                @endif
+            </tr>
+            </tfoot>
+        </table>
     </div>
+
+@endsection
+
+@section('scripts')
+    <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
     <script>
         $(document).ready(function() {
             $('#table').DataTable({

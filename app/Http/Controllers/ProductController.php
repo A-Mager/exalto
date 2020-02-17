@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        return view('product/create');
     }
 
     /**
@@ -79,7 +79,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //TODO create a product page where the user will be redirected to when they click on the product in the datatable
+        $name = Product::find($id);
+        $detail = ProductDetail::where('product_id', $id)->first();
+
+        return view('product/show', ['name' => $name, 'detail' => $detail]);
     }
 
     /**
@@ -91,6 +94,13 @@ class ProductController extends Controller
     public function edit($id)
     {
         //TODO create a editing form when the admin wants to edit a product page
+        $name = Product::find($id);
+        $detail = ProductDetail::where('product_id', $id)->first();
+
+        $path_nl = Storage::url('pdf/'.$name->model_number.'/'.$detail->pdf_nl);
+        $path_en = Storage::url('pdf/'.$name->model_number.'/'.$detail->pdf_en);
+
+        return view('product/show', ['name' => $name, 'detail' => $detail, 'path_nl' => $path_nl, 'path_en' => $path_en]);
     }
 
     /**
@@ -117,5 +127,9 @@ class ProductController extends Controller
         Storage::deleteDirectory('pdf/'.$product->model_number);
         $product->delete();
         return redirect('/');
+    }
+
+    public function download($id, $file){
+        return Storage::download('pdf/'.$id.'/'.$file);
     }
 }
