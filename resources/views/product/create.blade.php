@@ -35,21 +35,11 @@
                             </div>
 
                             <div class="field">
-
-                                <label for="image" class="label">Afbeelding</label>
-
-                                <div class="control">
-                                    <input type="text" class="input" name="image" id="image" >
-                                    <p class="help is-danger">{{ $errors->first('image') }}</p>
-                                </div>
-                            </div>
-
-                            <div class="field">
                                 <label for="pdfEN" class="label">Nederlandse PDF</label>
                                 <div class="control">
                                     <div id="file-pdf-nl" class="file has-name">
                                         <label class="file-label">
-                                            <input class="file-input" type="file" name="pdfNL" id="pdfNL" accept=".rtf,.pdf">
+                                            <input class="file-input" type="file" name="pdfNL" accept=".rtf,.pdf" required>
                                             <span class="file-cta">
                                               <span class="file-icon">
                                                 <i class="fas fa-upload"></i>
@@ -73,7 +63,7 @@
                                 <div class="control">
                                     <div id="file-pdf-en" class="file has-name">
                                         <label class="file-label">
-                                            <input class="file-input" type="file" name="pdfEN" accept=".rtf,.pdf">
+                                            <input class="file-input" type="file" name="pdfEN" accept=".rtf,.pdf" required>
                                             <span class="file-cta">
                                               <span class="file-icon">
                                                 <i class="fas fa-upload"></i>

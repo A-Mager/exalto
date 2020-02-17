@@ -82,6 +82,7 @@ class ProductController extends Controller
         $name = Product::find($id);
         $detail = ProductDetail::where('product_id', $id)->first();
 
+
         return view('product/show', ['name' => $name, 'detail' => $detail]);
     }
 
@@ -93,14 +94,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //TODO create a editing form when the admin wants to edit a product page
         $name = Product::find($id);
         $detail = ProductDetail::where('product_id', $id)->first();
 
         $path_nl = Storage::url('pdf/'.$name->model_number.'/'.$detail->pdf_nl);
         $path_en = Storage::url('pdf/'.$name->model_number.'/'.$detail->pdf_en);
 
-        return view('product/show', ['name' => $name, 'detail' => $detail, 'path_nl' => $path_nl, 'path_en' => $path_en]);
+        return view('product/edit', ['name' => $name, 'detail' => $detail, 'path_nl' => $path_nl, 'path_en' => $path_en]);
     }
 
     /**
@@ -112,7 +112,34 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //TODO create a PUT method so the product page gets updated
+        //Save type if changed
+        $name = Product::find($id);
+        $name->type = $request->type;
+        $name->save();
+
+        $detail = ProductDetail::where('product_id', $id)->first();
+
+        if($request->pdfNL !== null){
+            //Delete existing file from storage
+            Storage::delete('pdf/'.$name->model_number.'/'.$detail->pdf_nl);
+
+            $nlName = $request->pdfNL->getClientOriginalname();
+            $detail->pdf_nl = $nlName;
+            $file = $request->file('pdfNL')->storeAs('pdf/'.$name->model_number, $nlName);
+            $name->detail()->save($detail);
+        }
+
+        if($request->pdfEN !== null){
+            //Delete existing file from storage
+            Storage::delete('pdf/'.$name->model_number.'/'.$detail->pdf_en);
+
+            $enName = $request->pdfEN->getClientOriginalname();
+            $detail->pdf_en = $enName;
+            $file = $request->file('pdfEN')->storeAs('pdf/'.$name->model_number, $enName);
+            $name->detail()->save($detail);
+        }
+
+        return redirect()->route('show', ['id' => $id,'name' => $name, 'detail' => $detail]);
     }
 
     /**
@@ -129,6 +156,13 @@ class ProductController extends Controller
         return redirect('/');
     }
 
+    /**
+     *  Download the specified file from the storage.
+     *
+     * @param $id
+     * @param $file
+     * @return mixed
+     */
     public function download($id, $file){
         return Storage::download('pdf/'.$id.'/'.$file);
     }
