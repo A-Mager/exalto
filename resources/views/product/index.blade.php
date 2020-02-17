@@ -50,6 +50,9 @@
     <script>
         $(document).ready(function() {
             $('#table').DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 2 }
+                ],
                 language: {
                     "sProcessing": "Bezig...",
                     "sLengthMenu": "_MENU_ resultaten weergeven",

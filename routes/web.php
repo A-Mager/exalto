@@ -15,6 +15,7 @@
 Route::get('/', 'ProductController@index')->name('index');
 Route::get('/create', 'ProductController@create')->name('create');
 Route::post('/store', 'ProductController@store')->name('store');
+Route::get('/gen', 'ProductController@qrgen')->name('generator');
 Route::get('/product/{id}', 'ProductController@show')->name('show');
 Route::get('/product/{id}/delete', 'ProductController@destroy')->name('destroy');
 Route::get('/product/{id}/edit', 'ProductController@edit')->name('edit');
@@ -24,5 +25,4 @@ Route::get('/product/download/{id}/{file}', 'ProductController@download')->name(
 
 Auth::routes();
 
-
-
+Route::get('/home', 'ProductController@index');
