@@ -16,7 +16,18 @@
 
                             <div class="field">
 
-                                <label class="label"for="name">Model</label>
+                                <label class="label"for="name">Product naam</label>
+
+                                <div class="control">
+                                    <input type="text" class="input" name="name" id="name" value="{{$name->model_name}}" disabled>
+                                    <p class="help is-danger">{{ ($errors->first('model')) }}</p>
+                                </div>
+
+                            </div>
+
+                            <div class="field">
+
+                                <label class="label"for="name">Product nummer</label>
 
                                 <div class="control">
                                     <input type="text" class="input" name="model" id="model" value="{{$name->model_number}}" disabled>
@@ -30,8 +41,8 @@
                                 <label for="type" class="label">Type</label>
 
                                 <div class="control">
-                                    <input type="text" class="input" name="type" id="type" value="{{ $name->type }}">
-                                    <p class="help is-danger">{{ $errors->first('type') }}</p>
+                                    <input type="text" class="input" name="type" id="type" value="{{ $name->model_type }}">
+                                    <p class="help is-danger">{{ $errors->first('model_type') }}</p>
                                 </div>
                             </div>
 

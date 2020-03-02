@@ -1,21 +1,23 @@
 @extends('layouts/app')
 @section('content')
     <div class="container">
-        <table id="table" class="table datatable" style="width:50%;">
+        <table id="table" class="table datatable" style="width:60%;">
             <thead>
             <tr>
-                <th>Model</th>
+                <th>Naam</th>
+                <th>Nummer</th>
                 <th>Type</th>
                 @if(Auth::check() === true)
-                    <th>Acties</th>
+                    <th id="nosort">Acties</th>
                 @endif
             </tr>
             </thead>
             <tbody>
             @foreach ($data as $product)
                     <tr data-href="product/{{$product->id}}">
+                        <td><a href="product/{{$product->id}}"><button class="button is-text is-small">{{$product->model_name}}</button></a></td>
                         <td><a href="product/{{$product->id}}"><button class="button is-text is-small">{{$product->model_number}}</button></a></td>
-                        <td><button class="button is-white is-small" disabled>{{$product->type}}</button></td>
+                        <td><button class="button is-white is-small" disabled>{{$product->model_type}}</button></td>
                         @if(Auth::check() === true)
                             <td>
                                 <div class="buttons are-small">
@@ -31,7 +33,8 @@
             </tbody>
             <tfoot>
             <tr>
-                <th>Model</th>
+                <th>Naam</th>
+                <th>Nummer</th>
                 <th>Type</th>
                 @if(Auth::check() === true)
                     <th>Acties</th>
@@ -50,9 +53,11 @@
     <script>
         $(document).ready(function() {
             $('#table').DataTable({
+                @if(Auth::check() === true)
                 "columnDefs": [
-                    { "orderable": false, "targets": 2 }
+                    { "orderable": false, "targets": 3 }
                 ],
+                @endif
                 language: {
                     "sProcessing": "Bezig...",
                     "sLengthMenu": "_MENU_ resultaten weergeven",

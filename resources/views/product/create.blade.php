@@ -15,7 +15,20 @@
 
                             <div class="field">
 
-                                <label class="label"for="name">Model</label>
+                                <label class="label"for="name">Product naam*</label>
+
+                                <div class="control">
+                                    <input type="text" class="input" name="name" id="name" required>
+                                    <p class="help is-danger">{{ ($errors->first('name')) }}</p>
+                                </div>
+
+                            </div>
+
+                            <div class="field">
+
+                            <div class="field">
+
+                                <label class="label"for="name">Product nummer*</label>
 
                                 <div class="control">
                                     <input type="text" class="input" name="model" id="model" required>
@@ -26,7 +39,7 @@
 
                             <div class="field">
 
-                                <label for="type" class="label">Type</label>
+                                <label for="type" class="label">Type*</label>
 
                                 <div class="control">
                                     <input type="text" class="input" name="type" id="type">
@@ -35,7 +48,7 @@
                             </div>
 
                             <div class="field">
-                                <label for="pdfEN" class="label">Nederlandse PDF</label>
+                                <label for="pdfEN" class="label">Nederlandse PDF*</label>
                                 <div class="control">
                                     <div id="file-pdf-nl" class="file has-name">
                                         <label class="file-label">
@@ -59,7 +72,7 @@
                             </div>
 
                             <div class="field">
-                                <label for="pdfEN" class="label">Engelse PDF</label>
+                                <label for="pdfEN" class="label">Engelse PDF*</label>
                                 <div class="control">
                                     <div id="file-pdf-en" class="file has-name">
                                         <label class="file-label">

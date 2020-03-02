@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $table = DB::table('products')->select('id', 'model_number', 'type')->get();
+        $table = DB::table('products')->select('id','model_name', 'model_number', 'model_type')->get();
 
         return view('product/index', ['data' => $table]);
     }
@@ -48,15 +48,16 @@ class ProductController extends Controller
     {
 
         $product = new Product([
+            'model_name' => $request->name,
             'model_number' => $request->model,
-            'type' => $request->type,
+            'model_type' => $request->type,
         ]);
 
         $detail = new ProductDetail();
 
         //Generate the QR code
-        Storage::put('product/'.$request->model.'/'.$request->model.'.svg', \QrCode::generate('Hier komt de link naar de desbetreffende product pagina. Deze QR code zou dus lijden naar:'.$request->model));
-        $detail->qrlink = $request->model.'.svg';
+        Storage::put('product/'.$request->model.'/'.$request->model.'.svg', \QrCode::generate('Hier komt de link naar de desbetreffende product pagina. Deze QR code zou dus lijden naar: https://www.site-link-hier.nl/product/'.$request->model));
+        $detail->qr_link = $request->model.'.svg';
 
         //Save the uploaded files
         $nlName = $request->pdfNL->getClientOriginalname();
@@ -131,6 +132,7 @@ class ProductController extends Controller
 
             $nlName = $request->pdfNL->getClientOriginalname();
             $detail->pdf_nl = $nlName;
+            $detail->updated_at = Now();
             $file = $request->file('pdfNL')->storeAs('product/'.$name->model_number, $nlName);
             $name->detail()->save($detail);
         }
@@ -176,10 +178,5 @@ class ProductController extends Controller
     /**
      * QR-Code generator method
      */
-    public function qrgen(){
-        Storage::put('QR/yeet.svg', \QrCode::generate('The greatest of them all'));
-
-        return redirect()->route('index');
-    }
 
 }

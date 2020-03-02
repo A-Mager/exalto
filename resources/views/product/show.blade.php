@@ -10,12 +10,19 @@
                             @if($detail->pdf_nl !== null)
                                 <a href="download/{{$name->model_number}}/{{$detail->pdf_nl}}" class=""><button class="button is-info is-grouped pdfNl">Nederlandse PDF</button></a>&nbsp;
                             @endif
+
                             @if($detail->pdf_en !== null)
-                                <a href="download/{{$name->model_number}}/{{$detail->pdf_en}}" class=""><button class="button is-info is-grouped pdfEn">English PDF</button></a>
+                                <a href="download/{{$name->model_number}}/{{$detail->pdf_en}}" class=""><button class="button is-info is-grouped pdfEn">English PDF</button></a>&nbsp;
                             @endif
+
                             @if($detail->pdf_nl == null && $detail->pdf_en == null)
                                 <h2 class="title">Sorry! There seems to be nothing here right now.</h2>
                             @endif
+
+                            @if(Auth::check() === true)
+                                <a href="download/{{$name->model_number}}/{{$detail->qrlink}}" class=""><button class="button is-success is-grouped qrCode">QR Code</button></a>
+                            @endif
+
                         </div>
                     </div>
                 </div>
