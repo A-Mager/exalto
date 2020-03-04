@@ -18,7 +18,7 @@
                                 <label class="label"for="name">Product naam*</label>
 
                                 <div class="control">
-                                    <input type="text" class="input" name="name" id="name" required>
+                                    <input type="text" class="input" name="name" id="name" autocomplete="off" required>
                                     <p class="help is-danger">{{ ($errors->first('name')) }}</p>
                                 </div>
 
@@ -31,7 +31,7 @@
                                 <label class="label"for="name">Product nummer*</label>
 
                                 <div class="control">
-                                    <input type="text" class="input" name="model" id="model" required>
+                                    <input type="text" class="input" name="model" id="model" autocomplete="off" required>
                                     <p class="help is-danger">{{ ($errors->first('model')) }}</p>
                                 </div>
 

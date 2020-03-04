@@ -5,7 +5,8 @@
             <div class="tile is-horizontal">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <h1 class="title">{{$name->model_number}}</h1>
+                        <h1 class="title is-3">{{$name->model_name}}</h1>
+                        <h2 class="subtitle is-4">{{$name->model_number}}</h2>
                         <div class="buttons">
                             @if($detail->pdf_nl !== null)
                                 <a href="download/{{$name->model_number}}/{{$detail->pdf_nl}}" class=""><button class="button is-info is-grouped pdfNl">Nederlandse PDF</button></a>&nbsp;
@@ -20,7 +21,7 @@
                             @endif
 
                             @if(Auth::check() === true)
-                                <a href="download/{{$name->model_number}}/{{$detail->qrlink}}" class=""><button class="button is-success is-grouped qrCode">QR Code</button></a>
+                                <a href="download/{{$name->model_number}}/{{$detail->qr_link}}" class=""><button class="button is-success is-grouped qrCode">QR Code</button></a>
                             @endif
 
                         </div>
