@@ -1,15 +1,15 @@
 @extends('layouts/app')
 @section('content')
     <div class="container">
-        <table id="table" class="table datatable" style="width:60%;">
-            <thead>
+        <table id="table" class="table display stripe" style="width:60%;">
+            <thead style="background-color:#b51f38">
             <tr>
-                <th>Naam</th>
-                <th>Nummer</th>
-                <th>Type</th>
-                @if(Auth::check() === true)
-                    <th id="nosort">Acties</th>
-                @endif
+                <th style="color:#ffffff">Naam</th>
+                <th style="color:#ffffff">Nummer</th>
+                <th style="color:#ffffff">Type</th>
+                @auth
+                    <th style="color:#ffffff">Acties</th>
+                @endauth
             </tr>
             </thead>
             <tbody>
@@ -18,27 +18,27 @@
                         <td><a href="product/{{$product->id}}"><button class="button is-text is-small">{{$product->model_name}}</button></a></td>
                         <td><a href="product/{{$product->id}}"><button class="button is-text is-small">{{$product->model_number}}</button></a></td>
                         <td><button class="button is-white is-small" disabled>{{$product->model_type}}</button></td>
-                        @if(Auth::check() === true)
+                        @auth
                             <td>
                                 <div class="buttons are-small">
                                     <a href="product/{{$product->id}}/edit"><button class="button is-info">Pas aan</button></a>&nbsp;
                                     <a href="product/{{$product->id}}/delete"><button class="button is-danger">Verwijder</button></a>
                                 </div>
                             </td>
-                        @endif
+                        @endauth
                     </tr>
 
             @endforeach
 
             </tbody>
-            <tfoot>
+            <tfoot style="background-color:#b51f38; color: #ffffff">
             <tr>
-                <th>Naam</th>
-                <th>Nummer</th>
-                <th>Type</th>
-                @if(Auth::check() === true)
-                    <th>Acties</th>
-                @endif
+                <th style="color:#ffffff">Naam</th>
+                <th style="color:#ffffff">Nummer</th>
+                <th style="color:#ffffff">Type</th>
+                @auth
+                    <th style="color:#ffffff">Acties</th>
+                @endauth
             </tr>
             </tfoot>
         </table>

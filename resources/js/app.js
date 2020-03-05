@@ -30,3 +30,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+const fileInput = document.querySelector('#file-pdf-nl input[type=file]');
+fileInput.onchange = () => {
+    if (fileInput.files.length > 0) {
+        const fileName = document.querySelector('#file-pdf-nl .file-name');
+        fileName.textContent = fileInput.files[0].name;
+    }
+};
