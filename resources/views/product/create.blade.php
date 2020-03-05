@@ -48,11 +48,11 @@
                             </div>
 
                             <div class="field">
-                                <label for="pdfEN" class="label">Nederlandse PDF*</label>
+                                <label for="pdfEN" class="label">Nederlandse Handleiding*</label>
                                 <div class="control">
                                     <div id="file-pdf-nl" class="file has-name">
                                         <label class="file-label">
-                                            <input class="file-input" type="file" name="pdfNL" accept=".rtf,.pdf" required>
+                                            <input class="file-input" type="file" name="pdfManualNl" accept=".rtf,.pdf" required>
                                             <span class="file-cta">
                                               <span class="file-icon">
                                                 <i class="fas fa-upload"></i>
@@ -67,16 +67,16 @@
                                         </label>
                                     </div>
 
-                                    <p class="help is-danger">{{ $errors->first('pdfNL') }}</p>
+                                    <p class="help is-danger">{{ $errors->first('pdfManualNl') }}</p>
                                 </div>
                             </div>
 
                             <div class="field">
-                                <label for="pdfEN" class="label">Engelse PDF*</label>
+                                <label for="pdfEN" class="label">Engelse Handleiding*</label>
                                 <div class="control">
                                     <div id="file-pdf-en" class="file has-name">
                                         <label class="file-label">
-                                            <input class="file-input" type="file" name="pdfEN" accept=".rtf,.pdf" required>
+                                            <input class="file-input" type="file" name="pdfManualEn" accept=".rtf,.pdf" required>
                                             <span class="file-cta">
                                               <span class="file-icon">
                                                 <i class="fas fa-upload"></i>
@@ -90,7 +90,7 @@
                                             </span>
                                         </label>
                                     </div>
-                                    <p class="help is-danger">{{ $errors->first('pdfEN') }}</p>
+                                    <p class="help is-danger">{{ $errors->first('pdfManualEn') }}</p>
                                 </div>
                             </div>
 

@@ -60,13 +60,13 @@ class ProductController extends Controller
         $detail->qr_link = $request->model.'.svg';
 
         //Save the uploaded files
-        $nlName = $request->pdfNL->getClientOriginalname();
-        $detail->pdf_nl = $nlName;
-        $file = $request->file('pdfNL')->storeAs('product/'.$product->model_number, $nlName);
+        $nlName = $request->pdfManualNl->getClientOriginalname();
+        $detail->pdf_manual_nl = $nlName;
+        $file = $request->file('pdfManualNl')->storeAs('product/'.$product->model_number, $nlName);
 
-        $enName = $request->pdfEN->getClientOriginalname();
-        $detail->pdf_en = $enName;
-        $file = $request->file('pdfEN')->storeAs('product/'.$product->model_number, $enName);
+        $enName = $request->pdfManualEn->getClientOriginalname();
+        $detail->pdf_manual_en = $enName;
+        $file = $request->file('pdfManualEn')->storeAs('product/'.$product->model_number, $enName);
 
         //Save everything in the DB
         $product->save();
@@ -104,8 +104,8 @@ class ProductController extends Controller
         $name = Product::find($id);
         $detail = ProductDetail::where('product_id', $id)->first();
 
-        $path_nl = Storage::url('product/'.$name->model_number.'/'.$detail->pdf_nl);
-        $path_en = Storage::url('product/'.$name->model_number.'/'.$detail->pdf_en);
+        $path_nl = Storage::url('product/'.$name->model_number.'/'.$detail->pdf_manual_nl);
+        $path_en = Storage::url('product/'.$name->model_number.'/'.$detail->pdf_manual_en);
 
         return view('product/edit', ['name' => $name, 'detail' => $detail, 'path_nl' => $path_nl, 'path_en' => $path_en]);
     }
@@ -121,17 +121,17 @@ class ProductController extends Controller
     {
         //Save type if changed
         $name = Product::find($id);
-        $name->type = $request->type;
+        $name->model_type = $request->type;
         $name->save();
 
         $detail = ProductDetail::where('product_id', $id)->first();
 
         if($request->pdfNL !== null){
             //Delete existing file from storage
-            Storage::delete('pdf/'.$name->model_number.'/'.$detail->pdf_nl);
+            Storage::delete('pdf/'.$name->model_number.'/'.$detail->pdf_manual_nl);
 
             $nlName = $request->pdfNL->getClientOriginalname();
-            $detail->pdf_nl = $nlName;
+            $detail->pdf_manual_nl = $nlName;
             $detail->updated_at = Now();
             $file = $request->file('pdfNL')->storeAs('product/'.$name->model_number, $nlName);
             $name->detail()->save($detail);
@@ -139,10 +139,10 @@ class ProductController extends Controller
 
         if($request->pdfEN !== null){
             //Delete existing file from storage
-            Storage::delete('product/'.$name->model_number.'/'.$detail->pdf_en);
+            Storage::delete('product/'.$name->model_number.'/'.$detail->pdf_manual_en);
 
             $enName = $request->pdfEN->getClientOriginalname();
-            $detail->pdf_en = $enName;
+            $detail->pdf_manual_en = $enName;
             $file = $request->file('pdfEN')->storeAs('product/'.$name->model_number, $enName);
             $name->detail()->save($detail);
         }

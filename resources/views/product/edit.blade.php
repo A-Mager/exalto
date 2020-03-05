@@ -61,7 +61,7 @@
                                               </span>
                                             </span>
                                             <span class="file-name">
-                                                {{ $detail->pdf_nl }}
+                                                {{ $detail->pdf_manual_nl }}
                                             </span>
                                         </label>
                                     </div>
@@ -85,7 +85,7 @@
                                               </span>
                                             </span>
                                             <span class="file-name">
-                                              {{ $detail->pdf_en }}
+                                              {{ $detail->pdf_manual_en }}
                                             </span>
                                         </label>
                                     </div>

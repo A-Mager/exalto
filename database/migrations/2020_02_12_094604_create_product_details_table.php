@@ -17,8 +17,10 @@ class CreateProductDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
             $table->string('qr_link');
-            $table->string('pdf_nl')->nullable();
-            $table->string('pdf_en')->nullable();
+            $table->string('pdf_manual_nl')->nullable();
+            $table->string('pdf_documentation_nl')->nullable();
+            $table->string('pdf_manual_en')->nullable();
+            $table->string('pdf_documentation_en')->nullable();
             $table->timestamps();
 
             $table->foreign('product_id')
