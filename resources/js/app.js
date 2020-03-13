@@ -4,9 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+// require('./bootstrap');
+import Vue from 'vue';
 
-window.Vue = require('vue');
+import ExampleComponent from './components/ExampleComponent';
+import TestComponent from './components/TestComponent';
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,7 +21,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('example-component', ExampleComponent);
+Vue.component('test-component', TestComponent);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -36,5 +39,13 @@ fileInput.onchange = () => {
     if (fileInput.files.length > 0) {
         const fileName = document.querySelector('#file-pdf-nl .file-name');
         fileName.textContent = fileInput.files[0].name;
+    }
+};
+
+const fileInputEn = document.querySelector('#file-pdf-en input[type=file]');
+fileInputEn.onchange = () => {
+    if (fileInputEn.files.length > 0) {
+        const fileName = document.querySelector('#file-pdf-en .file-name');
+        fileName.textContent = fileInputEn.files[0].name;
     }
 };

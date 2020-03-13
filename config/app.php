@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Amsterdam',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         ZanySoft\Zip\ZipServiceProvider::class,
+        Chumper\Zipper\ZipperServiceProvider,
 
         /*
          * Application Service Providers...
@@ -227,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Zip' => ZanySoft\Zip\ZipFacade::class,
+        'Zipper' => Chumper\Zipper\Zipper::class,
     ],
 
 ];

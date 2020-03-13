@@ -31,22 +31,22 @@
             @endforeach
 
             </tbody>
-            <tfoot style="background-color:#b51f38; color: #ffffff">
-            <tr>
-                <th style="color:#ffffff">Naam</th>
-                <th style="color:#ffffff">Nummer</th>
-                <th style="color:#ffffff">Type</th>
-                @auth
-                    <th style="color:#ffffff">Acties</th>
-                @endauth
-            </tr>
-            </tfoot>
+{{--            <tfoot style="background-color:#b51f38; color: #ffffff">--}}
+{{--            <tr>--}}
+{{--                <th style="color:#ffffff">Naam</th>--}}
+{{--                <th style="color:#ffffff">Nummer</th>--}}
+{{--                <th style="color:#ffffff">Type</th>--}}
+{{--                @auth--}}
+{{--                    <th style="color:#ffffff">Acties</th>--}}
+{{--                @endauth--}}
+{{--            </tr>--}}
+{{--            </tfoot>--}}
         </table>
     </div>
 
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
@@ -81,4 +81,4 @@
         });
 
     </script>
-@endsection
+@endpush
