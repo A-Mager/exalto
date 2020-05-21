@@ -4,25 +4,25 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-// require('./bootstrap');
+require('./bootstrap');
 import Vue from 'vue';
 
-import ExampleComponent from './components/ExampleComponent';
-import TestComponent from './components/TestComponent';
+import TableComponent from './components/TableComponent';
+import DeleteComponent from './components/DeleteComponent';
 
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
  * components and automatically register them with their "basename".
  *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ * Eg. ./components/TableComponent.vue -> <example-component></example-component>
  */
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', ExampleComponent);
-Vue.component('test-component', TestComponent);
+Vue.component('table-component', TableComponent);
+Vue.component('delete-component', DeleteComponent);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,7 +31,7 @@ Vue.component('test-component', TestComponent);
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#app'
 });
 
 const fileInput = document.querySelector('#file-pdf-nl input[type=file]');

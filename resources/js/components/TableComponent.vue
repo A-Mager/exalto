@@ -1,16 +1,4 @@
 <template>
-    <!-- NOTE: THIS COMPONENT IS IDENTICAL AS THE ORIGINAL VERSION OF THE TABLECOMPONENT. FALL BACK ON THIS IF IT BREAKS -->
-
-
-
-    <!--    <div>-->
-    <!--    <h3 v-for="post in posts"-->
-    <!--        v-bind:key="post.id"-->
-    <!--        >{{post.title}}</h3>-->
-    <!--        <ul>-->
-    <!--            <li v-for="row in rows">{{ row.model_name }}</li>-->
-    <!--        </ul>-->
-    <!--    </div>-->
     <div class="container" id="tableDiv">
         <input :value="checkedItems" form="qrSelect" name="selected" id="selected" hidden/>
         <table id="table" class="table display stripe" style="width:60%;">
@@ -49,12 +37,6 @@
         data:function(){
             return {
                 checkedItems: [],
-                posts: [
-                    {id: 1, title: 'My journey with Vue'},
-                    {id: 2, title: 'Blogging with Vue'},
-                    {id: 3, title: 'Why Vue is so fun'}
-                ],
-
             }
         }
     }

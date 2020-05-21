@@ -6,7 +6,7 @@
                 <div class="tile is-parent">
                     <div class="tile is-child box">
                         <h1 class="title is-3">{{$name->model_name}}</h1>
-                        <h2 class="subtitle is-4">{{$name->model_number}}</h2>
+                        <h2 class="subtitle is-4">{{$name->model_number}}, {{$name->model_type}}</h2>
                         <div class="buttons">
                             @if($detail->pdf_manual_nl !== null)
                                 <a href="download/{{$name->model_number}}/{{$detail->pdf_manual_nl}}" class=""><button class="button is-info is-grouped pdfNl">Nederlandse PDF</button></a>&nbsp;

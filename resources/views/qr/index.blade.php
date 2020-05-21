@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+    <div class="container">
     @if(session()->has('errorToken'))
         <section class="hero is-danger">
             <div class="hero-body">
@@ -15,17 +16,17 @@
             </div>
         </section>
     @endif
-    @if(session()->has('downloadToken'))
-        <section class="hero is-danger">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title is-4">
-                        Downloaded
-                    </h1>
-                </div>
-            </div>
-        </section>
-    @endif
+{{--    @if(session()->has('downloadToken'))--}}
+{{--        <section class="hero is-danger">--}}
+{{--            <div class="hero-body">--}}
+{{--                <div class="container">--}}
+{{--                    <h1 class="title is-4">--}}
+{{--                        Downloaded--}}
+{{--                    </h1>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
+{{--    @endif--}}
     <div class="level">
         <div class="level-left">
             <div class="level-item">
@@ -34,56 +35,33 @@
                     <button type="submit" class="button">Download</button>
                 </form>
             </div>
+
             <div class="level-item">
                 <a href="{{Route('qrDownloadAll')}}"><button class="button">Download All</button></a>
             </div>
+
         </div>
     </div>
-    <div class="container" id="tableDiv">
-
-
-
-         <p>Selected: @{{ checkedItems }}</p>
-        <test-component :product-data="'{{ json_encode($data) }}'"></test-component>
-{{--            <table id="table" class="table display stripe" style="width:60%;">--}}
-{{--                <thead style="background-color:#b51f38">--}}
-{{--                <tr>--}}
-{{--                    <th style="color:#ffffff">Naam </th>--}}
-{{--                    <th style="color:#ffffff">Nummer</th>--}}
-{{--                    <th style="color:#ffffff">Type</th>--}}
-{{--                </tr>--}}
-{{--                </thead>--}}
-{{--                <tbody>--}}
-{{--                @foreach ($data as $product)--}}
-{{--                    <tr data-href="product/{{$product->id}}">--}}
-{{--                        <td><div class="level-left"><input type="checkbox" name="selected[]" value="{{ $product->model_number }}" form="qrSelect"><button class="button is-text is-small">{{$product->model_name}}</button></div></td>--}}
-{{--                        <td><button class="button is-text is-small">{{$product->model_number}}</button></td>--}}
-{{--                        <td><button class="button is-text is-small">{{$product->model_type}}</button></td>--}}
-{{--                    </tr>--}}
-
-{{--                @endforeach--}}
-
-{{--                </tbody>--}}
-{{--                <tfoot style="background-color:#b51f38; color: #ffffff">--}}
-{{--                <tr>--}}
-{{--                    <th style="color:#ffffff">Naam</th>--}}
-{{--                    <th style="color:#ffffff">Nummer</th>--}}
-{{--                    <th style="color:#ffffff">Type</th>--}}
-{{--                </tr>--}}
-{{--                </tfoot>--}}
-{{--            </table>--}}
+    <table-component :rows="{{json_encode($data)}}"></table-component>
     </div>
 @endsection
 
 @push('scripts')
 
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/sl-1.3.1/datatables.min.js" defer></script>
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js" defer></script>
     <script>
         $(document).ready(function() {
             $('#table').DataTable({
+                "order": [[1, "asc"]],
+                'columnDefs': [
+                    {
+                        "orderable": false, "targets": 0,
+
+                    }
+                ],
                 language: {
                     "sProcessing": "Bezig...",
                     "sLengthMenu": "_MENU_ resultaten weergeven",
@@ -104,7 +82,9 @@
                     },
                 }
             });
+
         });
+
     </script>
 
 @endpush

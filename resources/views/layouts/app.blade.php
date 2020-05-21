@@ -11,15 +11,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- Development version -->
 
     <!-- Production version -->
 {{--    <script src="https://cdn.jsdelivr.net/npm/vue"></script>--}}
-
-
-
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

@@ -22,7 +22,7 @@
                             <td>
                                 <div class="buttons are-small">
                                     <a href="product/{{$product->id}}/edit"><button class="button is-info">Pas aan</button></a>&nbsp;
-                                    <a href="product/{{$product->id}}/delete"><button class="button is-danger">Verwijder</button></a>
+                                    <a href="product/{{$product->id}}/delete" id="deleteReq"><button class="button is-danger" >Verwijder</button></a>
                                 </div>
                             </td>
                         @endauth

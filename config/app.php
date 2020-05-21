@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
         ZanySoft\Zip\ZipServiceProvider::class,
-        Chumper\Zipper\ZipperServiceProvider,
+//        Chumper\Zipper\ZipperServiceProvider,
 
         /*
          * Application Service Providers...

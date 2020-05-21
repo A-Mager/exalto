@@ -26,13 +26,13 @@ class QrController extends Controller
     {
         //Write the download function here. All selected items must be put into an array, after which the array is looped through.
         //In this loop it will grab the desired QR code files and put them in a ZIP File, which is then given to the user.
+        //$prod references to the model_number
 
-        dd($request->input);
-
-
+//        dd($request->selected);
 
         //Set the path and name for the ZIP file(Storage/app/QRExport/QRExport.zip)
         $path=storage_path('app/QRExport/');
+//        dd($path);
         $zipFileName = 'QRExport.zip';
 
         //Call ZipArchive class
@@ -43,7 +43,8 @@ class QrController extends Controller
 //        dd($r);
         try {
             //Put the selected files in the zip --- PUT LOOP HERE ---
-            foreach ($request->selected as $prod) {
+//            foreach ($request->selected as $prod) {
+            foreach (explode(',', $request->selected) as $prod) {
 //            dd($prod);
                 $r = $zip->addFile('../storage/app/product/' . $prod . '/' . $prod . '.svg', 'QRCodes/' . $prod . '.svg');
 //            dd($r);
