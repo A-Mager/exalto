@@ -43,8 +43,12 @@ class QrController extends Controller
 //        dd($r);
         try {
             //Put the selected files in the zip --- PUT LOOP HERE ---
-//            foreach ($request->selected as $prod) {
-            foreach (explode(',', $request->selected) as $prod) {
+            //Comment next line for vue implementation
+            foreach ($request->selected as $prod) {
+
+                //Uncomment next line for Vue Implementation
+//            foreach (explode(',', $request->selected) as $prod) {
+
 //            dd($prod);
                 $r = $zip->addFile('../storage/app/product/' . $prod . '/' . $prod . '.svg', 'QRCodes/' . $prod . '.svg');
 //            dd($r);
