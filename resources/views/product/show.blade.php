@@ -1,6 +1,6 @@
 @extends('layouts/app')
 @section('content')
-    <div class="container page-content" >
+    <div class="container page-content" style="margin-top: 4%">
         <div class="tile is-ancestor">
             <div class="tile is-horizontal">
                 <div class="tile is-parent">

@@ -1,6 +1,6 @@
 @extends('layouts/app')
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top: 4%">
         <table id="table" class="table display stripe" style="width:60%;">
             <thead style="background-color:#b51f38">
             <tr>

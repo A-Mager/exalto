@@ -61,7 +61,7 @@
                         <tbody>
                         @foreach ($data as $product)
                             <tr data-href="product/{{$product->id}}">
-                                <td><input type="checkbox" form="qrSelect" name="selected[]" value="{{$product->model_number}}"></td>
+                                <td id="cell-centered"><input type="checkbox" form="qrSelect" name="selected[]" value="{{$product->model_number}}"></td>
                                 <td><div class="level-left"><button class="button is-text is-small">{{$product->model_name}}</button></div></td>
                                 <td><button class="button is-text is-small">{{$product->model_number}}</button></td>
                                 <td><button class="button is-text is-small">{{$product->model_type}}</button></td>
@@ -81,6 +81,7 @@
                     </table>
             </div>
         <!-- Delete until here-->
+    </div>
 @endsection
 
 @push('scripts')

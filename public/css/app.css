@@ -10888,3 +10888,8 @@ a.text-dark:focus {
   height: 100vh;
 }
 
+#cell-centered {
+  text-align: center;
+  vertical-align: middle;
+}
+
