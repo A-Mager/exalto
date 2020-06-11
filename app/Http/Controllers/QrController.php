@@ -43,10 +43,7 @@ class QrController extends Controller
 //        dd($r);
         try {
             //Put the selected files in the zip --- PUT LOOP HERE ---
-            //Comment next line for vue implementation
-//            foreach ($request->selected as $prod) {
 
-                //Uncomment next line for Vue Implementation
             foreach (explode(',', $request->selected) as $prod) {
 
 //            dd($prod);
