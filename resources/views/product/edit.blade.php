@@ -41,7 +41,7 @@
                                 <label for="type" class="label">Type</label>
 
                                 <div class="control">
-                                    <input type="text" class="input" name="type" id="type" value="{{ $name->model_type }}">
+                                    <input type="text" class="input" name="type" id="type" value="{{ $name->model_type }}" required>
                                     <p class="help is-danger">{{ $errors->first('model_type') }}</p>
                                 </div>
                             </div>

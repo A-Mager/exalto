@@ -16,18 +16,6 @@
         </section>
     @endif
     <div class="container">
-
-{{--    @if(session()->has('downloadToken'))--}}
-{{--        <section class="hero is-danger">--}}
-{{--            <div class="hero-body">--}}
-{{--                <div class="container">--}}
-{{--                    <h1 class="title is-4">--}}
-{{--                        Downloaded--}}
-{{--                    </h1>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </section>--}}
-{{--    @endif--}}
         <div class="level" style="margin-top: 4%">
             <div class="level-left">
                 <div class="level-item">
@@ -43,44 +31,9 @@
 
             </div>
         </div>
-        <!-- Uncomment next line to fix-->
-{{--        <table-component :rows="{{json_encode($data)}}"></table-component>--}}
 
-        <!-- Delete all of this garbo for Vue -->
-            <div class="container" id="tableDiv">
+        <table-component :rows="{{json_encode($data)}}"></table-component>
 
-                    <table id="table" class="table display stripe" style="width:60%;">
-                        <thead style="background-color:#b51f38">
-                        <tr>
-                            <th style="color:#ffffff"></th>
-                            <th style="color:#ffffff">Naam </th>
-                            <th style="color:#ffffff">Nummer</th>
-                            <th style="color:#ffffff">Type</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($data as $product)
-                            <tr data-href="product/{{$product->id}}">
-                                <td id="cell-centered"><input type="checkbox" form="qrSelect" name="selected[]" value="{{$product->model_number}}"></td>
-                                <td><div class="level-left"><button class="button is-text is-small">{{$product->model_name}}</button></div></td>
-                                <td><button class="button is-text is-small">{{$product->model_number}}</button></td>
-                                <td><button class="button is-text is-small">{{$product->model_type}}</button></td>
-                            </tr>
-
-                        @endforeach
-
-                        </tbody>
-                        <tfoot style="background-color:#b51f38; color: #ffffff">
-                        <tr>
-                            <th style="color:#ffffff"></th>
-                            <th style="color:#ffffff">Naam </th>
-                            <th style="color:#ffffff">Nummer</th>
-                            <th style="color:#ffffff">Type</th>
-                        </tr>
-                        </tfoot>
-                    </table>
-            </div>
-        <!-- Delete until here-->
     </div>
 @endsection
 

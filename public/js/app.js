@@ -37379,7 +37379,7 @@ var render = function() {
           "tbody",
           _vm._l(_vm.rows, function(row) {
             return _c("tr", [
-              _c("td", [
+              _c("td", { attrs: { id: "cell-centered" } }, [
                 _c("input", {
                   directives: [
                     {

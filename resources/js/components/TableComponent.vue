@@ -12,7 +12,7 @@
             </thead>
             <tbody>
             <tr v-for="row in rows">
-                <td><input type="checkbox"  :value="row.model_number" v-model="checkedItems" ></td>
+                <td id="cell-centered"><input type="checkbox"  :value="row.model_number" v-model="checkedItems" ></td>
                 <td><div class="level-left"><button class="button is-text is-small">{{ row.model_name }}</button></div></td>
                 <td><button class="button is-text is-small">{{ row.model_number }}</button></td>
                 <td><button class="button is-text is-small">{{ row.model_type }}</button></td>
